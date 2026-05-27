@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>بيان | Bayan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+
+    <div id="splash-screen" class="splash-screen">
+        <div class="splash-content">
+            <i class="fa-solid fa-book-quran splash-logo"></i>
+            <h1 class="splash-title">بيـــان</h1>
+            <div class="loader-bar">
+                <div class="loader-progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <header class="app-header">
+        <div class="header-right">
+            <h2 class="app-title">بيان</h2>
+        </div>
+        <div class="header-left">
+            <button class="icon-btn" id="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+            <button class="icon-btn" id="theme-toggle"><i class="fa-solid fa-moon"></i></button>
+            <button class="icon-btn" id="settings-btn"><i class="fa-solid fa-gear"></i></button>
+        </div>
+    </header>
+
+    <main id="main-content" class="main-content">
+        <section id="page-home" class="page active">
+            <div class="cards-container">
+                <div class="card" onclick="navigate('quran')">
+                    <i class="fa-solid fa-book-open card-icon"></i>
+                    <div class="card-info">
+                        <h3>القرآن الكريم</h3>
+                        <p>قراءة وتلاوة وتفسير</p>
+                    </div>
+                    <i class="fa-solid fa-chevron-left card-arrow"></i>
+                </div>
+                <div class="card" onclick="navigate('hadith')">
+                    <i class="fa-solid fa-scroll card-icon"></i>
+                    <div class="card-info">
+                        <h3>الأحاديث النبوية</h3>
+                        <p>الكتب التسعة المعتمدة</p>
+                    </div>
+                    <i class="fa-solid fa-chevron-left card-arrow"></i>
+                </div>
+                <div class="card" onclick="navigate('prayer')">
+                    <i class="fa-solid fa-clock card-icon"></i>
+                    <div class="card-info">
+                        <h3>أوقات الصلاة</h3>
+                        <p>تنبيهات ومواقيت دقيقة</p>
+                    </div>
+                    <i class="fa-solid fa-chevron-left card-arrow"></i>
+                </div>
+                <div class="card" onclick="navigate('misbaha')">
+                    <i class="fa-solid fa-hand-holding-heart card-icon"></i>
+                    <div class="card-info">
+                        <h3>المسبحة الإلكترونية</h3>
+                        <p>عداد تسبيح احترافي</p>
+                    </div>
+                    <i class="fa-solid fa-chevron-left card-arrow"></i>
+                </div>
+            </div>
+        </section>
+
+        <section id="page-prayer" class="page">
+            <div class="section-header">
+                <h2>أوقات الصلاة</h2>
+            </div>
+            <div id="prayer-container" class="prayer-container">
+                <div class="spinner"></div>
+            </div>
+        </section>
+
+        <section id="page-misbaha" class="page">
+            <div class="misbaha-container">
+                <h2 id="zikr-text">سبحان الله</h2>
+                <div class="counter-display" id="counter-display">0</div>
+                <div class="misbaha-controls">
+                    <button id="btn-reset" class="btn-secondary"><i class="fa-solid fa-rotate-right"></i></button>
+                    <button id="btn-tasbih" class="btn-primary"><i class="fa-solid fa-fingerprint"></i> سبّح</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="page-quran" class="page">
+            <div class="section-header"><h2>القرآن الكريم</h2></div>
+            <div class="spinner"></div> </section>
+        
+        <section id="page-hadith" class="page">
+             <div class="section-header"><h2>الأحاديث النبوية</h2></div>
+             <div class="spinner"></div>
+        </section>
+    </main>
+
+    <nav class="bottom-nav">
+        <div class="nav-item active" onclick="navigate('home', this)">
+            <i class="fa-solid fa-house"></i>
+            <span>الرئيسية</span>
+        </div>
+        <div class="nav-item" onclick="navigate('quran', this)">
+            <i class="fa-solid fa-book-quran"></i>
+            <span>القرآن</span>
+        </div>
+        <div class="nav-item" onclick="navigate('prayer', this)">
+            <i class="fa-solid fa-mosque"></i>
+            <span>الصلاة</span>
+        </div>
+        <div class="nav-item" onclick="navigate('misbaha', this)">
+            <i class="fa-solid fa-ring"></i>
+            <span>المسبحة</span>
+        </div>
+    </nav>
+
+    <script src="script.js"></script>
+</body>
+</html>

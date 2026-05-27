@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#0B2B1B">
 </head>
 <body>
 
@@ -15,68 +16,56 @@
         <div class="splash-content">
             <i class="fa-solid fa-book-quran splash-logo"></i>
             <h1 class="splash-title">بيـــان</h1>
-            <div class="loader-bar">
-                <div class="loader-progress"></div>
-            </div>
+            <div class="loader-bar"><div class="loader-progress"></div></div>
         </div>
     </div>
 
     <header class="app-header">
         <div class="header-right">
-            <h2 class="app-title">بيان</h2>
+            <h2 class="app-title" id="header-title">بيان</h2>
         </div>
         <div class="header-left">
-            <button class="icon-btn" id="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
             <button class="icon-btn" id="theme-toggle"><i class="fa-solid fa-moon"></i></button>
-            <button class="icon-btn" id="settings-btn"><i class="fa-solid fa-gear"></i></button>
         </div>
     </header>
 
     <main id="main-content" class="main-content">
+        
         <section id="page-home" class="page active">
             <div class="cards-container">
-                <div class="card" onclick="navigate('quran')">
+                <div class="card ripple-btn" onclick="navigate('quran')">
                     <i class="fa-solid fa-book-open card-icon"></i>
                     <div class="card-info">
                         <h3>القرآن الكريم</h3>
-                        <p>قراءة وتلاوة وتفسير</p>
+                        <p>قراءة، بحث، وتفسير</p>
                     </div>
-                    <i class="fa-solid fa-chevron-left card-arrow"></i>
                 </div>
-                <div class="card" onclick="navigate('hadith')">
-                    <i class="fa-solid fa-scroll card-icon"></i>
-                    <div class="card-info">
-                        <h3>الأحاديث النبوية</h3>
-                        <p>الكتب التسعة المعتمدة</p>
-                    </div>
-                    <i class="fa-solid fa-chevron-left card-arrow"></i>
-                </div>
-                <div class="card" onclick="navigate('prayer')">
+                <div class="card ripple-btn" onclick="navigate('prayer')">
                     <i class="fa-solid fa-clock card-icon"></i>
                     <div class="card-info">
                         <h3>أوقات الصلاة</h3>
-                        <p>تنبيهات ومواقيت دقيقة</p>
+                        <p>مواقيت دقيقة حسب موقعك</p>
                     </div>
-                    <i class="fa-solid fa-chevron-left card-arrow"></i>
                 </div>
-                <div class="card" onclick="navigate('misbaha')">
+                <div class="card ripple-btn" onclick="navigate('qibla')">
+                    <i class="fa-solid fa-kaaba card-icon"></i>
+                    <div class="card-info">
+                        <h3>اتجاه القبلة</h3>
+                        <p>بوصلة دقيقة للكعبة</p>
+                    </div>
+                </div>
+                <div class="card ripple-btn" onclick="navigate('misbaha')">
                     <i class="fa-solid fa-hand-holding-heart card-icon"></i>
                     <div class="card-info">
                         <h3>المسبحة الإلكترونية</h3>
-                        <p>عداد تسبيح احترافي</p>
+                        <p>عداد تسبيح ذكي</p>
                     </div>
-                    <i class="fa-solid fa-chevron-left card-arrow"></i>
                 </div>
             </div>
         </section>
 
         <section id="page-prayer" class="page">
-            <div class="section-header">
-                <h2>أوقات الصلاة</h2>
-            </div>
-            <div id="prayer-container" class="prayer-container">
-                <div class="spinner"></div>
-            </div>
+            <div id="prayer-container" class="prayer-container"></div>
         </section>
 
         <section id="page-misbaha" class="page">
@@ -84,20 +73,34 @@
                 <h2 id="zikr-text">سبحان الله</h2>
                 <div class="counter-display" id="counter-display">0</div>
                 <div class="misbaha-controls">
-                    <button id="btn-reset" class="btn-secondary"><i class="fa-solid fa-rotate-right"></i></button>
-                    <button id="btn-tasbih" class="btn-primary"><i class="fa-solid fa-fingerprint"></i> سبّح</button>
+                    <button id="btn-reset" class="btn-secondary ripple-btn"><i class="fa-solid fa-rotate-right"></i></button>
+                    <button id="btn-tasbih" class="btn-primary ripple-btn"><i class="fa-solid fa-fingerprint"></i> سبّح</button>
                 </div>
             </div>
         </section>
 
         <section id="page-quran" class="page">
-            <div class="section-header"><h2>القرآن الكريم</h2></div>
-            <div class="spinner"></div> </section>
-        
-        <section id="page-hadith" class="page">
-             <div class="section-header"><h2>الأحاديث النبوية</h2></div>
-             <div class="spinner"></div>
+            <div id="surah-list-container"></div>
         </section>
+
+        <section id="page-quran-reader" class="page">
+            <div class="reader-header">
+                <button class="icon-btn" onclick="navigate('quran')"><i class="fa-solid fa-arrow-right"></i> رجوع</button>
+                <h3 id="surah-title"></h3>
+            </div>
+            <div id="quran-content" class="quran-content"></div>
+        </section>
+
+        <section id="page-qibla" class="page">
+            <div class="compass-container">
+                <p>قم بتدوير الهاتف بشكل مسطح</p>
+                <div class="compass-ring" id="compass-ring">
+                    <i class="fa-solid fa-kaaba kaaba-pointer"></i>
+                    <i class="fa-solid fa-arrow-up compass-arrow"></i>
+                </div>
+            </div>
+        </section>
+
     </main>
 
     <nav class="bottom-nav">
@@ -112,10 +115,6 @@
         <div class="nav-item" onclick="navigate('prayer', this)">
             <i class="fa-solid fa-mosque"></i>
             <span>الصلاة</span>
-        </div>
-        <div class="nav-item" onclick="navigate('misbaha', this)">
-            <i class="fa-solid fa-ring"></i>
-            <span>المسبحة</span>
         </div>
     </nav>
 
